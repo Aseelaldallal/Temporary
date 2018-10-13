@@ -7,24 +7,20 @@ import { HelpComponent } from './tabs/help/help.component';
 import { SplashComponent } from './splash/splash.component';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { ErrorComponent } from './error/error.component';
+import { AuthGaurd } from './services/auth-gaurd.service';
 
 const appRoutes: Routes = [
-  { path: '', component: QuickStartComponent },
-  { path: 'more', component: MoreComponent },
-  { path: 'chat', component: ChatComponent },
-  { path: 'help', component: HelpComponent },
+  { path: '', component: QuickStartComponent, canActivate: [AuthGaurd] },
+  { path: 'more', component: MoreComponent, canActivate: [AuthGaurd] },
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGaurd] },
+  { path: 'help', component: HelpComponent, canActivate: [AuthGaurd] },
   { path: 'splash', component: SplashComponent },
   { path: 'permissions', component: PermissionsComponent },
   { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    )
-  ],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

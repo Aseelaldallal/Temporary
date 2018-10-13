@@ -1,7 +1,10 @@
 {
-     "[typescript]": {
-          "editor.formatOnSave": true
-     },
-     "prettier.singleQuote": true,
-     "editor.detectIndentation": false
+    "editor.formatOnSave": false,
+    "[typescript]": {
+        "editor.formatOnSave": true
+    },
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4
 }
