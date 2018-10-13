@@ -8,6 +8,7 @@ import { QuickStartComponent } from './tabs/quick-start/quick-start.component';
 import { MoreComponent } from './tabs/more/more.component';
 import { ChatComponent } from './tabs/chat/chat.component';
 import { HelpComponent } from './tabs/help/help.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HelpComponent } from './tabs/help/help.component';
     QuickStartComponent,
     MoreComponent,
     ChatComponent,
-    HelpComponent
+    HelpComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule

@@ -1,0 +1,7 @@
+{
+     "[typescript]": {
+          "editor.formatOnSave": true
+     },
+     "prettier.singleQuote": true,
+     "editor.detectIndentation": false
+}
