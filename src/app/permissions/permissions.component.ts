@@ -14,7 +14,7 @@ export class PermissionsComponent {
     ) {}
 
     proceed() {
-        this.router.navigate(['']);
+        this.router.navigate(['quickstart']);
     }
 
     exit() {
