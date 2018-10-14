@@ -20,16 +20,20 @@ export class MicrosoftService {
                 this.token = true;
             }
             this.authenticationResult.next(authResult);
-        }, 4000);
+        }, 3000);
     }
 
     isAuthenticated(): boolean {
         return this.token;
     }
 
+    cancelAuthentication() {
+        this.token = false;
+    }
+
     generateRandomError(): string {
         const x = Math.random() * 10;
-        if (x > 0) {
+        if (x > 9) {
             return 'Authentication Error';
         } else {
             return '';

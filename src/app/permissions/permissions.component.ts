@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MicrosoftService } from '../services/microsoft.service';
 
 @Component({
-  selector: 'app-permissions',
-  templateUrl: './permissions.component.html',
-  styleUrls: ['./permissions.component.css']
+    selector: 'app-permissions',
+    templateUrl: './permissions.component.html',
+    styleUrls: ['./permissions.component.css']
 })
-export class PermissionsComponent implements OnInit {
+export class PermissionsComponent {
+    constructor(
+        private router: Router,
+        private microsoftService: MicrosoftService
+    ) {}
 
-  constructor() { }
+    proceed() {
+        this.router.navigate(['']);
+    }
 
-  ngOnInit() {
-  }
-
+    exit() {
+        this.microsoftService.cancelAuthentication();
+        this.router.navigate(['splash']);
+    }
 }

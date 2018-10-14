@@ -27,7 +27,7 @@ export class SplashComponent implements OnInit, OnDestroy {
         this.authResult = this.microsoftService.authenticationResult.subscribe(
             (authFailed: string) => {
                 if (!authFailed) {
-                    this.router.navigate(['']);
+                    this.router.navigate(['permissions']);
                 } else {
                     this.router.navigate(['Error']);
                 }
