@@ -1,4 +1,7 @@
 
 
 
-<button (click)="onLogin()">Login</button>
+<button *ngIf="!authenticating" (click)="onLogin()">Login</button>
+
+
+ <p *ngIf="authenticating"> Spinner </p>

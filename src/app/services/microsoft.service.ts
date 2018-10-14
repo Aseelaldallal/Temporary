@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class MicrosoftService {
-  private token = false;
+    private token = false;
+    authenticating = new Subject<boolean>();
 
-  constructor() {}
+    constructor() {}
 
-  authenticate(): void {
-    setTimeout(() => {
-      this.token = true;
-    }, 4000);
-    this.token = true;
-  }
+    authenticate(): void {
+        this.authenticating.next(true);
+        setTimeout(() => {
+            this.token = true;
+            this.authenticating.next(false);
+        }, 4000);
+    }
 
-  isAuthenticated(): boolean {
-    return this.token;
-  }
+    isAuthenticated(): boolean {
+        return this.token;
+    }
 }
