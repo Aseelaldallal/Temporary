@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./splash.component.css']
 })
 export class SplashComponent implements OnInit, OnDestroy {
-    subscription: Subscription;
+    authInProgress: Subscription;
+    authResult: Subscription;
     authenticating = false;
 
     constructor(
@@ -18,11 +19,17 @@ export class SplashComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
-        this.subscription = this.microsoftService.authenticating.subscribe(
+        this.authInProgress = this.microsoftService.authenticating.subscribe(
             (isAuthenticating: boolean) => {
                 this.authenticating = isAuthenticating;
-                if (!this.authenticating) {
-                    this.router.navigate(['permissions']);
+            }
+        );
+        this.authResult = this.microsoftService.authenticationResult.subscribe(
+            (authFailed: string) => {
+                if (!authFailed) {
+                    this.router.navigate(['']);
+                } else {
+                    this.router.navigate(['Error']);
                 }
             }
         );
@@ -33,6 +40,6 @@ export class SplashComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        this.authInProgress.unsubscribe();
     }
 }
